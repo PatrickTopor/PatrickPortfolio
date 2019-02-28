@@ -1,0 +1,43 @@
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+c:\users\kurt.friedrich\documents\visual studio 2013\Projects\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Prog260-Heap\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt\Google Drive\BellevueCollege\BBB-Prog260-Algo-DataStruct\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Google Drive\BellevueCollege\A1AA-Prog260-Algo-DataStruct - Fall2015\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Desktop\A-Spring2016\AP260spr15\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe.config
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\bin\Debug\Prog260-Heap.pdb
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csprojResolveAssemblyReference.cache
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.csproj.CoreCompileInputs.cache
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.exe
+C:\Users\kurt.friedrich\Desktop\AAA-Prog260-Spring-18\Topic  9 - Heaps\Heaps\Prog260-Heap\obj\Debug\Prog260-Heap.pdb
