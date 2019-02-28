@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Travel around Rome</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                background-image: url(romanBackground.jpg);
+            }
+            img {
+                margin-top: 10%;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            #output, h1, h3 {
+                text-align: center;
+            }
+            #userInput {
+                text-align: center;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+
+        <h1>WELCOME TO ROME!</h1>
+        <h3>You are a general tasked with defeating the Gauls.  In order to recieve the favor of the gods, you must perform a sacrifice to the god Apollo.  Will you please them?</h3>
+        <img src="" width="1000" height="900">
+        <p id="output"></p>
+        <div id="userInput">
+            <input id="input" type="text" placeholder="Rome awaits"> 
+            <button id="userInput">enter</button>
+            <br />
+            <br />
+            
+        </div>
+        <script>
+            
+
+//Map and images declared
+var images = [];
+images[0] = "ForumOfTrajan.jpg";
+images[1] = "ForumOfAugustus.jpg";
+images[2] = "TemplumPacis.jpg";
+images[3] = "TempleOfAntoniusAndFaustina.jpg";
+images[4] = "HallOfJulia.jpg";
+images[5] = "HouseOfNero.jpg";
+images[6] = "TempleOfApollo.jpg";
+images[7] = "LeptisMagna.jpg";
+images[8] = "HouseOfAugustus.jpg";
+var image = document.querySelector("img");  
+            
+var rome = [];
+rome [0] = "Forum of Traiani"; 
+rome [1] = "Forum Augustum";
+rome [2] = "Templum Pacis";
+rome [3] = "Temple of Antoninus and Faustina";
+rome [4] = "Hall of Julia";
+rome [5] = "House of Nero";
+rome [6] = "Temple of Apollo" + "<br />" + "Do you have all THREE items for the sacrifice?";
+rome [7] = "Leptis Magna";
+rome [8] = "House of Augustus";     
+            
+var cannotGoThere = [];
+cannotGoThere[0] = "<strong>" + "You cannot go beyond the Traiani Forum." + "</strong>";
+cannotGoThere[1] = "<strong>" + "You cannot go beyond the Augustum Forum." + "</strong>";
+cannotGoThere[2] = "<strong>" + "The gods forbid you to go beyond the Templum Pacis." + "</strong>";
+cannotGoThere[3] = "<strong>" + "There is no reason to go past the temple of one of our greatest emperors." + "</strong>";
+cannotGoThere[4] = "";
+cannotGoThere[5] = "<strong>" + "They say the spirit of Nero haunts the back end of the house.  I would not go there." + "</strong>";
+cannotGoThere[6] = "<strong>" + "A calm music from Apollo's lyre reminds you that you still need to sacrirfice and cannot leave until then." + "</strong>";
+cannotGoThere[7] = "<strong>" + "You try to go through the Theatre, but the actors whose patron is Apollo, pusch you back away from your escape." + "</strong>";
+cannotGoThere[8] = "<strong>" + "The spirit of Augustus appears in front of you and tells you to go back." + "</strong>"; 
+            
+var gameMessage = "";
+var output = document.querySelector("#output");
+var input = document.querySelector("#input");
+
+var items = ["cow", "Temple Priest", "Knife"];
+var itemLocations = [1, 2, 8];
+            
+           
+            
+//Player gets dropped off here and what they can do
+var playerLocation = 4;
+var playersInput = "";
+var actionsIKnow  = ["north", "east", "south","west", "take", "use"];
+var action = "";
+var itemsIKnow = ["cow", "Temple Priest", "Knife", "Blessed Laurel"];
+var item = ""; 
+//This is what the user will hold
+var thingsUserHas = [];
+
+
+
+
+//Button is set
+let button = document.querySelector("button");  //ECMASCRIPT 6 here
+button.style.cursor = "pointer";
+button.addEventListener("click", clickHandler, false);
+
+render();
+
+function clickHandler()
+{
+  playGame();
+ 
+}
+
+function playGame()
+{
+  //input is made lowercase
+  playersInput = input.value;
+  playersInput = playersInput.toLowerCase();
+  
+  //Variables reset
+  gameMessage = "";
+  action = "";
+  
+  //Checking out if the input is recognized from the array
+  for(i = 0; i < actionsIKnow.length; i++)
+  {
+    if(playersInput.indexOf(actionsIKnow[i]) !== -1)
+    {
+      action = actionsIKnow[i];
+      console.log("player's action: " + action);
+      break;
+    }
+  }
+  
+  //Checks what the user has
+  for(i = 0; i < itemsIKnow.length; i++)
+  {
+    if(playersInput.indexOf(itemsIKnow[i]) !== -1)
+    {
+      item = itemsIKnow[i];
+      console.log("player's item: " + item);
+    }
+  }
+  
+  //Moves the player based on input
+  switch(action)
+  {
+    case "north":
+      if(playerLocation >= 3)
+      {
+        playerLocation -= 3;
+      }
+      else
+      {
+        gameMessage = cannotGoThere[playerLocation];
+      }
+      break;
+    
+    case "east":
+	    if(playerLocation % 3 != 2)
+      {
+        playerLocation += 1;
+      }
+      else
+      {
+        gameMessage = cannotGoThere[playerLocation];
+      }
+      break;
+      
+    case "south":
+      if(playerLocation < 6)
+      {
+        playerLocation += 3;
+      }
+      else
+      {
+        gameMessage = cannotGoThere[playerLocation];
+      }
+      break;
+      
+    case "west":
+      if(playerLocation % 3 != 0)
+      {
+        playerLocation -= 1;
+      }
+      else
+      {
+        gameMessage = cannotGoThere[playerLocation];
+      }
+      break;
+      
+    case "take":
+      takeItem();
+		  break;
+		  
+		case "use":
+		  useItem();
+		  break;
+          
+    		  
+		default:
+		  gameMessage = "Do you mean to go: north, south, east or west?  Or did you want to take something?";
+  }
+  
+  render();
+}
+
+function takeItem()  //Figure out how to make this to work
+{
+  let itemIndexNumber = itemLocations.indexOf(playerLocation);//ECMASCRIPT 6 here
+  
+  //This checks if the item is recognized and where the player is 
+  if(itemIndexNumber !== -1 && itemLocations[itemIndexNumber] === playerLocation)
+  {
+	item = items[itemIndexNumber];
+    gameMessage = "You take the " + item + " with you for the sacrifice.";
+    thingsUserHas.push(item);
+  
+    items.splice(itemIndexNumber, 1);
+    itemLocations.splice(itemIndexNumber, 1);
+          
+    //console.log("World items: " + items);
+    //console.log("User items: " + thingsUserHas);
+  }
+        
+  else
+  {
+    gameMessage = "There is nothing to take.";
+  }
+}
+
+function useItem()
+{
+  let userItemIndexNumber = thingsUserHas.indexOf(item);  //ECMASCRIPT 6 here
+       
+  //If they do not have that specific item
+  if(userItemIndexNumber === -1)
+  {
+    gameMessage = "You're missing that thing.";
+  }
+  
+  //If the player has nothing
+  if(thingsUserHas.length === 0)
+  {
+    gameMessage += "You have nothing with you";
+  }
+   
+  //If the item is with you
+  if(userItemIndexNumber !== -1 && playerLocation === 6)
+  {
+    switch(item)
+    {
+        case "cow": 
+	      if(playerLocation === 6)
+            {
+            gameMessage = "You prepare the cow by making it lie down on the altar." + "<br />";
+            gameMessage += "Now you need to go get the priest.";
+            }
+        else
+        {
+          gameMessage = "You pat the cow.";
+        }
+	      break;
+
+	      
+	    case "Temple Priest":
+	      if(playerLocation === 6)
+	      {
+	        gameMessage = "The priest begains to pray and speaks to the heavens: " + "<br />";
+            gameMessage += "From the very outset I pray to You, Apollo, inventor of music and of all the healing arts, come to my aid and this undertaking; bless it with Your laurel." + "<br />";
+            gameMessage += "The preist tells you to sacrifice now.  Go get the Knife!";  
+              
+	      }
+        else
+        {
+	        gameMessage = "The priest hits you on the head for your impatience.";
+	      }
+	      break;	
+            	      
+	    case "Knife":
+	      if(playerLocation === 6)
+        {    
+          gameMessage = "You raise the knife in the air and plunge it into the cow.  " + "<br />";
+          gameMessage += "The god Apollo himself comes down and blesses you victory in battle." + "<br />"; 
+          gameMessage += "He then gives you a laurel, so that your men may be healed during the midst of battle.";    
+            
+          //Give the player the Laurel for battle    
+          items.push("Blessed Laurel");
+	      itemLocations.push(playerLocation);
+    
+        }
+        else
+        {
+          gameMessage = "You tap the knife blade, admiring the craftsmanship.";
+        }
+	      break;
+	   }
+   }
+}
+            
+
+function render()
+{
+  //displays location
+  output.innerHTML = rome[playerLocation];
+  image.src = images[playerLocation];
+  
+  for(var i = 0; i < items.length; i++)
+  {
+   //Find out if there's an item at this location
+   if(playerLocation === itemLocations[i])
+   {
+     output.innerHTML += "<br>You see a <strong>" + items[i] + "</strong> here.";
+   }
+  }
+  
+  output.innerHTML += "<br><em>" + gameMessage + "</em>";
+  
+  if(thingsUserHas.length !== 0)
+  {
+    output.innerHTML += "<br>You have with you: " + thingsUserHas.join(", ");  
+  }
+}
+    
+        </script>
+
+    </body>
+      
+</html>
