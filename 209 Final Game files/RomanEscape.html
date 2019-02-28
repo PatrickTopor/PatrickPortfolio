@@ -1,0 +1,91 @@
+<!--For this assignment, make a grid map of pompeii and create a roman person to run away from the ashes of vesivius to get to the harbor.  The obsticles should be other roman looters, who you fight to gain wealth and time, and meteors from the explosion which you must dodge-->
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Escape from Pompeii</title>
+        
+        <style>
+            
+            body
+            {
+                background-image: url();  /*add background image here*/
+                background-size: cover;     
+            }
+            
+            #image
+            {
+                position: absolute; /*Try to adjust it so that the person starts in the beginning */
+                left: 0px;
+                top: 0px;    
+                
+            }
+            
+            #buttons
+            {
+                text-align: center;
+            }
+            
+        </style>
+
+        
+    </head>
+    
+    <body>
+        <div id="buttons">
+            <button id="btnOne">Move right</button> <!--Try putting the buttons on the bottom of the page-->
+            <button id="btnTwo">Move down</button>
+            <button id="btnThree">Move up</button>
+            <button id="btnFour">Move left</button>           
+        </div>
+        
+        <div id="image"> <!--This is where the charecter image is declared-->
+            <img src="" width="150px" height="150px">    
+        </div>
+        <div id="PlayerStats">
+            
+        </div>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+        <script>
+        var playerStepsRemaining = 20;    
+            
+            
+            
+            
+        $(document).ready( function() /*Try to make it so that the charecter cannot move outside of the boundaries*/
+        {
+            $("#btnOne").click( function()
+            {
+                $("#image").animate( {left: '+=100px', playerStepsRemaining: '-=1'}, 0); /*0 for instant, the bigger the number, the slower it moves*/
+                
+            });//end btnOne click function
+            
+            $("#btnTwo").click( function()
+            {
+                $("#image").animate( {top: '+=100px', playerStepsRemaining: '-=1'}, 0);  /*Make it so that the charcter does not go outside of the grids in the backgrund image*/
+                
+            });//end btnTwo click function
+            
+            $("#btnThree").click( function()
+            {
+                $("#image").animate( {top: '-=100px', playerStepsRemaining: '-=1'}, 0);
+                
+            });//end btnThree click function
+            
+            $("#btnFour").click( function()
+            {
+                $("#image").animate( {left: '-=100px', playerStepsRemaining: '-=1'}, 0);
+                
+            });//end btnFour click function
+        });//end ready
+
+        </script>
+        
+    </body>
+    
+</html>

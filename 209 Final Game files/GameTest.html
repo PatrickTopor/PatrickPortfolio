@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>Pompeii Escape</title>
+        <link rel="stylesheet" href="Pompeii.css">
+        <style>
+            
+            .message
+            {
+                position: relative;
+                opacity: 0;
+            }
+            
+        </style>
+        
+    </head>
+    
+<body>
+    
+    <section id="opening">
+            
+        <div id="intro">
+            <h1>Escape from Pompeii</h1>
+            <br />
+                <h4 class="message" id="m1">You are the Roman citizen Marcus Volusius Albanus, who came down here for a nice summer vacation.</h4>
+                <h4 class="message" id="m2">But alas, Vesuvius has erupted as you were about to take a stroll through the countryside.</h4>
+                <h4 class="message" id="m3">Now you are at the Porta di Nola on the far side of town.  You must reach the Porta Marina on the bottom left, where the harbor and possible safety lies.</h4>
+                <h4 class="message" id="m4">However, you need to have some sesterces to bribe one of the boats to take you along, which can be obtained by fighting a fearsome Roman Legionary!</h4>
+                <h4 class="message" id="m5">If you are close to a fireball, I would advise seeking shelter in one of the many buildings you will pass on the way.</h4>
+                <h4 class="message" id="m6">What are you waiting for? RUN!</h4>
+            <input id="button" type="button" value="Start Running">
+        </div>
+            
+    </section>
+        
+    <section id="game" style="display: none;">
+            
+            <h1 id="output"></h1>
+            <div id="stage"></div>
+            <button id="credit">Who created the game</button>
+        
+    </section>
+    
+    <section id="credits" style="display: none;">
+        
+        <h1 class="thanks">Special thanks to Bellevue College and Ron Austin for teaching me web and game development</h1>
+        <br />
+        <h1 class="thanks">Song: Track 4 - Rome Approaches.  Link <a href="https://www.youtube.com/watch?v=G_hWCe_6eZw">for the song.</a></h1> 
+        <audio id="music" loop src="Track4-RomeApproaches.mp3" autoplay></audio>
+        
+    </section>
+    
+        <!--Jquery part of the game if user presses 1 of 2 buttons-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+
+    <script>
+        var message1 = document.getElementById("m1"); 
+        var message2 = document.getElementById("m2");
+        var message3 = document.getElementById("m3");
+        var message4 = document.getElementById("m4");
+        var message5 = document.getElementById("m5");
+        var message6 = document.getElementById("m6");
+
+        TweenLite.to(message1, 3, {opacity: 1, delay: 1});
+        TweenLite.to(message2, 3, {opacity: 1, delay: 5});
+        TweenLite.to(message3, 3, {opacity: 1, delay: 9});
+        TweenLite.to(message4, 3, {opacity: 1, delay: 13});
+        TweenLite.to(message5, 3, {opacity: 1, delay: 17});
+        TweenLite.to(message6, 3, {opacity: 1, delay: 21});
+    </script>
+    
+    <script>
+    //closes opening screen to game
+    $("#button").click(function (){
+        $("#opening").hide();
+            $("#game").show();
+                });
+    </script>
+    
+    <script>
+    //closes game to credits screen
+    $("#credit").click(function (){
+        $("#game").hide();
+            $("#credits").show();
+                });
+    </script>
+    
+    <script>
+        //variables for the gameMessage and the game canvas
+const stage = document.querySelector("#stage");
+const output = document.querySelector("#output");
+
+window.addEventListener("keydown", keydownHandler, false);
+
+        //The game map
+let map = [
+    [20, 0, 19, 0, 18, 0, 17, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],    
+    [25, 0, 24, 0, 23, 0, 22, 0, 21],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [16, 0, 15, 0, 14, 0, 13, 0, 12],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [11, 0, 10, 0, 9, 0, 8, 0, 7],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 0, 3, 0, 4, 0, 5, 0, 6]
+];
+
+//Where the player, fireball and soldiers are
+let gameObjects = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 26],
+  [0, 0, 27, 0, 0, 0, 0, 28, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 28, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 28, 0, 0, 0, 28, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+];
+
+//Code for the game images and elements
+        let gameImages = {
+            Romanroad: 0,
+            START: 1,
+            FINISH: 2,
+            BASILICA: 3,
+            BARRACKS: 4,
+            CASADIMENANDER: 5,
+            AMPITHEATER: 6,
+            VILLADIGUILIAFELICE: 7,
+            HOUSEOFVENUS: 8,
+            CASADELFRUTETTO: 9,
+            CASADELCITARISTA: 10,
+            BUILDINGOFEUMACHIA: 11,
+            PORTADISARNO: 12,
+            VIADELLABBONDANZA: 13,
+            STABIANBATHS: 14,
+            MACELLUM: 15,
+            TEMPLEOFJUPITER: 16,
+            CASERMA: 17,
+            NECROPOLIDIPORTAVESUVIO: 18,
+            HOUSEOFFAUN: 19,
+            HOUSEOFTRAGICPOET: 20,
+            CASADIOBELLOFIRMO: 21,
+            VICOLO: 22,
+            TEMPLEOFFORTUNAAUGUSTUS: 23,
+            TEMPLEOFAPOLLO: 24,
+            TEMPLEOFVESPASIANALTER: 25,
+            PLAYER: 26,
+            FIREBALL: 27,
+            SOLDIER: 28
+        }
+        
+        let mapElements = {
+            SIZE: 120,
+            ROWS: map.length,
+            COLUMNS: map[0].length
+        }
+
+        let keyDirections = {
+            UP: 38,
+            DOWN: 40,
+            RIGHT: 39,
+            LEFT: 37
+        }
+
+let playerRow;
+let playerColumn;
+let fireballRow;
+let fireballColumn;
+        
+//finds the location of the fireball and player
+for(let row = 0; row < mapElements.ROWS; row++) 
+{	
+  for(let column = 0; column < mapElements.COLUMNS; column++) 
+  {
+    if(gameObjects[row][column] === gameImages.PLAYER)
+    { 
+      playerRow = row;
+      playerColumn = column;
+    }
+    if(gameObjects[row][column] === gameImages.FIREBALL)
+    { 
+      fireballRow = row;
+      fireballColumn = column;
+    }
+  }
+}
+
+//The game variables
+let userItems = {
+    oxygen: 30,
+    sesterces: 100,
+    experience: 0
+};      
+        
+let gameMessage = "Use the arrow keys to escape the volcanic fireballs!";
+
+render();
+
+//Moves the player and calls a function/shows message when the player presses a key        
+function keydownHandler(event)
+{
+    //checks if the player can move and if so, moves them to a new location on the map
+  switch(event.keyCode)
+  {
+    case keyDirections.UP:
+          
+	    if(playerRow > 0)
+	    {
+	      gameObjects[playerRow][playerColumn] = 0;
+	      
+	      playerRow--;
+	      
+	      gameObjects[playerRow][playerColumn] = gameImages.PLAYER;
+	    }
+	    break;
+	  
+	  case keyDirections.DOWN:
+	    if(playerRow < mapElements.ROWS - 1)
+	    {
+	      gameObjects[playerRow][playerColumn] = 0;
+	      playerRow++;
+	      gameObjects[playerRow][playerColumn] = gameImages.PLAYER;
+	    }
+	    break;
+	    
+	  case keyDirections.LEFT:
+	    if(playerColumn > 0)
+	    {
+	      gameObjects[playerRow][playerColumn] = 0;
+	      playerColumn--;
+	      gameObjects[playerRow][playerColumn] = gameImages.PLAYER;
+	    }
+	    break;  
+	    
+	  case keyDirections.RIGHT:
+	    if(playerColumn < mapElements.COLUMNS - 1)
+	    {
+	      gameObjects[playerRow][playerColumn] = 0;
+	      playerColumn++;
+	      gameObjects[playerRow][playerColumn] = gameImages.PLAYER;
+	    }
+	    break; 
+  }
+  
+  //figures out what function or message is used based on what the player encounters
+  switch(map[playerRow][playerColumn])
+  {
+    case gameImages.Romanroad:
+      gameMessage = "Keep on running you fool!"
+      break;
+    
+    case gameImages.SOLDIER:
+      fight();
+      break; 
+      
+    case gameImages.FINISH:
+      endGame();
+      break;    
+  }
+   
+  moveFireball();
+  
+  //Find out if the player is touching the fireball or a soldier
+  if(gameObjects[playerRow][playerColumn] === gameImages.FIREBALL)
+  {
+    endGame();
+  }
+  
+  //Take 1 oxygen for every move
+  userItems.oxygen--;
+  
+  //If player becomes penniless or has no oxygen, player dies
+  if(userItems.oxygen <= 0 || userItems.sesterces <= 0)
+  {
+    endGame();
+  }
+    
+  render();
+}
+
+        //Moves fireball
+function moveFireball()
+{
+  var UP = 1;
+  var DOWN = 2;
+  var LEFT = 3;
+  var RIGHT = 4;
+  
+//where the fireball is allowed to move
+  var validDirections = [];
+  
+  //where the fireball will move
+  var direction = undefined;
+  
+//Find out if where the fireball can move is on a Roman Road
+  if(fireballRow > 0)
+  {
+    var thingAbove = map[fireballRow - 1][fireballColumn];
+    if(thingAbove === gameImages.Romanroad)
+	  {
+	    validDirections.push(keyDirections.UP)
+	  }
+  }
+  if(fireballRow < mapElements.ROWS - 1)
+  { 
+    var thingBelow = map[fireballRow + 1][fireballColumn];
+    if(thingBelow === gameImages.Romanroad)
+	  {
+	    validDirections.push(keyDirections.DOWN)
+	  }
+  }
+  if(fireballColumn > 0)
+  {
+    var thingToTheLeft = map[fireballRow][fireballColumn - 1];
+    if(thingToTheLeft === gameImages.Romanroad)
+	  {
+	    validDirections.push(keyDirections.LEFT)
+	  }
+  } 
+  if(fireballColumn < mapElements.COLUMNS - 1)
+  {
+    var thingToTheRight = map[fireballRow][fireballColumn + 1];
+    if(thingToTheRight === gameImages.Romanroad)
+	  {
+	    validDirections.push(keyDirections.RIGHT)
+	  }
+  } 
+  
+//If the fireball has not moved yet, it will be given a random direction to move to
+  if(validDirections.length !== 0)
+  {
+    var randomNumber = Math.floor(Math.random() * validDirections.length);
+    direction = validDirections[randomNumber];
+  }
+  
+  //Move the fireball in the chosen direction
+  switch(direction)
+  {
+    case keyDirections.UP:
+		  gameObjects[fireballRow][fireballColumn] = 0;
+		  fireballRow--; 
+		  gameObjects[fireballRow][fireballColumn] = gameImages.FIREBALL;
+		  break;
+	  
+	  case keyDirections.DOWN:
+	    gameObjects[fireballRow][fireballColumn] = 0;
+		  fireballRow++;
+		  gameObjects[fireballRow][fireballColumn] = gameImages.FIREBALL;
+	    break;
+	  
+	  case keyDirections.LEFT:
+	    gameObjects[fireballRow][fireballColumn] = 0;
+		  fireballColumn--;
+		  gameObjects[fireballRow][fireballColumn] = gameImages.FIREBALL;
+	    break;
+	 
+	 case keyDirections.RIGHT:
+	    gameObjects[fireballRow][fireballColumn] = 0;
+		  fireballColumn++;
+		  gameObjects[fireballRow][fireballColumn] = gameImages.FIREBALL;
+  }
+}
+
+function fight()
+{
+  //The players strength
+  var playerStrength = Math.ceil((userItems.oxygen + userItems.sesterces) / 2);
+  
+  //The soldiers strength
+  var soldierStrength = Math.ceil(Math.random() * playerStrength * 2);
+  
+  if(soldierStrength > playerStrength)
+  {
+    //The soldier beats you
+    var stolenSesterces = Math.round(soldierStrength / 2);
+    userItems.sesterces -= stolenSesterces;
+    
+    //Player get 1 experience
+    userItems.experience += 1;
+    
+    //Update the game message
+    gameMessage = "You fight and LOSE " + stolenSesterces + " Sesterces." 
+      + "Player's strength: " + playerStrength 
+        + " Soldier's strength: " + soldierStrength;
+  }
+  else
+  {
+    //Player wins some sesterces
+    var soldierSesterces = Math.round(soldierStrength / 2);
+    userItems.sesterces += soldierSesterces;
+    
+    //Player gets 2 experience
+    userItems.experience += 2;
+    
+    //Update the game message
+    gameMessage 
+      = "You fight and WIN " + soldierSesterces + " Sesterces."
+      + " Player's strength: " + playerStrength 
+      + " Soldier's strength: " + soldierStrength;
+  } 
+}
+
+function endGame()
+        //Games ands and message is displayed based on the circumstances
+{
+  if(map[playerRow][playerColumn] === gameImages.FINISH)
+  {
+    //Calculate the score
+    var score = userItems.oxygen + userItems.sesterces + userItems.experience;
+    
+    //Display the game message
+    gameMessage = "You made it here ALIVE! You bribe a ship to escape the destruction." + "Final Score: " + score; 
+  }
+  else if(gameObjects[playerRow][playerColumn] === gameImages.FIREBALL)
+  {
+    gameMessage 
+      = "You were hit by a fireball and incinerated!";
+  }
+  else
+  {
+    //If player ran out of oxygen or sesterces
+    if(userItems.sesterces <= 0)
+    {
+      gameMessage += " You've run out of Sesterces! You cannot bribe a ship to take you now!"; 
+    }
+    else
+    {
+      gameMessage = " You've run out of oxygen!"; 
+    }
+    
+    gameMessage 
+      += " You suffocate in the ash cloud!"; 
+  }
+  
+  //Remove the keyboard listener to end the game
+  window.removeEventListener("keydown", keydownHandler, false);
+}
+
+function render()
+{
+
+  if(stage.hasChildNodes())
+  {
+    for(var i = 0; i < mapElements.ROWS * mapElements.COLUMNS; i++) 
+    {	 
+      stage.removeChild(stage.firstChild);
+    }
+  }
+  
+  //Render the game by looping through the map arrays
+  for(var row = 0; row < mapElements.ROWS; row++) 
+  {	
+    for(var column = 0; column < mapElements.COLUMNS; column++) 
+    { 
+      //Create a img tag called cell
+      var cell = document.createElement("img");
+
+      //Set it's CSS class to "cell"
+      cell.setAttribute("class", "cell");
+
+      //Add the img tag to the <div id="stage"> tag
+      stage.appendChild(cell);
+
+      //Find the correct image for this map cell
+      switch(map[row][column])
+      {
+        case gameImages.Romanroad:
+            cell.src = "RomanRoad.jpeg";
+        break;
+
+        case gameImages.START:
+            cell.src = "PortaDiNola.jpg";
+        break; 
+
+        case gameImages.FINISH:
+            cell.src = "porta marina.jpeg";
+        break;
+
+        case gameImages.BASILICA:
+            cell.src = "Basilica.jpeg";
+        break;  
+              
+        case gameImages.BARRACKS:
+            cell.src = "GladiatorBarracks.JPG";
+        break;
+                                
+        case gameImages.CASADIMENANDER:
+            cell.src = "CasaDiMenander.jpeg";
+        break;
+                                
+        case gameImages.AMPITHEATER:
+            cell.src = "ampitheater.jpeg";
+        break;
+                                
+        case gameImages.VILLADIGUILIAFELICE:
+            cell.src = "VillaDiGiuliaFelice.jpeg";
+        break;
+                                
+        case gameImages.HOUSEOFVENUS:
+            cell.src = "HouseOfVenus.jpg";
+        break;
+                                
+        case gameImages.CASADELFRUTETTO:
+            cell.src = "CasaDelFrutetto.jpeg";
+        break;
+                                
+        case gameImages.CASADELCITARISTA:
+            cell.src = "CasaDelCitarista.jpeg";
+        break;
+                                
+        case gameImages.BUILDINGOFEUMACHIA:
+            cell.src = "BuildingOfEumachia.jpeg";
+        break;
+                                
+        case gameImages.PORTADISARNO:
+            cell.src = "PortaDiSarno.jpeg";
+        break;
+                                
+        case gameImages.VIADELLABBONDANZA:
+            cell.src = "ViaDellAbbondanza.jpeg";
+        break;
+                                
+        case gameImages.STABIANBATHS:
+            cell.src = "StabianBaths.jpeg";
+        break;
+                                
+        case gameImages.MACELLUM:
+            cell.src = "Macellum.jpeg";
+        break;
+                                
+        case gameImages.TEMPLEOFJUPITER:
+            cell.src = "TempleOfJupiter.jpg";
+        break;
+                                
+        case gameImages.CASERMA:
+            cell.src = "Caserma.jpeg";
+        break;
+                                
+        case gameImages.NECROPOLIDIPORTAVESUVIO:
+            cell.src = "NecropoliDiPortaVesuvio.jpeg";
+        break;
+                                
+        case gameImages.HOUSEOFFAUN:
+            cell.src = "HouseOfFaun.jpeg";
+        break;
+                                
+        case gameImages.HOUSEOFTRAGICPOET:
+            cell.src = "HouseOfTragicPoet.jpeg";
+        break;
+                                
+        case gameImages.CASADIOBELLOFIRMO:
+            cell.src = "CasaDiObelloFirmo.jpeg";
+        break;
+                            
+        case gameImages.VICOLO:
+            cell.src = "Vicolo.jpeg";
+        break;
+                                
+        case gameImages.TEMPLEOFFORTUNAAUGUSTUS:
+            cell.src = "TempleOfFortunaAugusta.jpg";
+        break;
+                                
+        case gameImages.TEMPLEOFAPOLLO:
+            cell.src = "TempleOfApollo.jpeg";
+        break;
+                                
+        case gameImages.TEMPLEOFVESPASIANALTER:
+            cell.src = "TempleOfVespasianAlter.jpeg";
+        break;
+      }  
+      
+      //Display the player, fireball and soldiers
+	    switch(gameObjects[row][column])
+	    {
+	      case gameImages.PLAYER:
+	        cell.src = "AugustusSprite.png";
+	      break;   
+	        
+	      case gameImages.FIREBALL:
+	        cell.src = "Fireball.png";
+	      break;  
+                
+            case gameImages.SOLDIER:
+                cell.src = "PengiunSoldier.png";
+            break;
+	    } 
+  
+      //Position the cell 
+      cell.style.top = row * mapElements.SIZE + "px";
+      cell.style.left = column * mapElements.SIZE + "px";
+    }
+  }
+  
+  //Display the game message
+	output.innerHTML = gameMessage;
+	
+	output.innerHTML 
+	  += "<br>Sesterces: " + userItems.sesterces + ", Oxygen " 
+	  + userItems.oxygen + ", Experience: " + userItems.experience;
+}
+
+    </script>
+    
+    </body>
+    
+</html>

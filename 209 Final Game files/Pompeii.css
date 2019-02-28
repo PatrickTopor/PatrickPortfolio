@@ -1,0 +1,69 @@
+
+            #opening
+            {
+                background-image: url(volcano.png);
+                background-size: cover;
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            .cell
+            {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                border: 1px solid black;
+                background-color: white;
+            }
+            
+            #stage
+            {
+                position: relative;
+                margin-left: 20%;
+            }
+            
+            #output
+            {
+                margin-left: 20%;
+            }
+            #game
+            {
+                background-image: url(RomanBackground.jpeg);
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            #credits
+            {
+                background-image: url(EndBackground.jpeg);
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            #credit
+            {
+                margin-top: 1100px;
+                margin-left: 40%;
+                background-color: orangered;
+                border-radius: 20px;
+            }
+            h1, h4
+            {
+                font-family: fantasy;
+            }
+            .thanks
+            {
+                color: blueviolet;
+                text-align: center;
+            }
