@@ -24,6 +24,7 @@ namespace PokerProject
 
             while(balance != 0)
             {
+                //This gives the players their cards
                 myDeck.ResetUsage(myDeck);
                 SuperCard[] computerHand = myDeck.GetCards(howManyCards); 
                 SuperCard [] playersHand = myDeck.GetCards(howManyCards);
@@ -39,6 +40,7 @@ namespace PokerProject
                     ComputerDrawsOne(computerHand, myDeck);
                 }
                 DisplayHands(computerHand, playersHand);
+                //This compares the cards held by the players
                 bool won = CompareHands (computerHand, playersHand);  
                 
                 if (won == true)  //if user won a round
