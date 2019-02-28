@@ -1,0 +1,16 @@
+/Users/Patrick/Projects/PatrickLinkedList/PatrickLinkedList/bin/Debug/PatrickLinkedList.exe
+/Users/Patrick/Projects/PatrickLinkedList/PatrickLinkedList/bin/Debug/PatrickLinkedList.pdb
+/Users/Patrick/Projects/PatrickLinkedList/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.csproj.CoreCompileInputs.cache
+/Users/Patrick/Projects/PatrickLinkedList/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.exe
+/Users/Patrick/Projects/PatrickLinkedList/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.pdb
+/Users/Patrick/Desktop/PatrickLinkedList/bin/Debug/PatrickLinkedList.exe
+/Users/Patrick/Desktop/PatrickLinkedList/bin/Debug/PatrickLinkedList.pdb
+/Users/Patrick/Desktop/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.csproj.CoreCompileInputs.cache
+/Users/Patrick/Desktop/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.exe
+/Users/Patrick/Desktop/PatrickLinkedList/obj/x86/Debug/PatrickLinkedList.pdb
+C:\Users\Janusz\Desktop\PatrickLinkedList\bin\Debug\PatrickLinkedList.exe
+C:\Users\Janusz\Desktop\PatrickLinkedList\bin\Debug\PatrickLinkedList.pdb
+C:\Users\Janusz\Desktop\PatrickLinkedList\obj\x86\Debug\PatrickLinkedList.csprojResolveAssemblyReference.cache
+C:\Users\Janusz\Desktop\PatrickLinkedList\obj\x86\Debug\PatrickLinkedList.csproj.CoreCompileInputs.cache
+C:\Users\Janusz\Desktop\PatrickLinkedList\obj\x86\Debug\PatrickLinkedList.exe
+C:\Users\Janusz\Desktop\PatrickLinkedList\obj\x86\Debug\PatrickLinkedList.pdb
