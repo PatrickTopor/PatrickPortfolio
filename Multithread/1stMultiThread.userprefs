@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{CD125BF5-E014-409C-867D-4CD0F188E452}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="1stMultiThread/Program.cs">
+    <Files>
+      <File FileName="1stMultiThread/Program.cs" Line="98" Column="17" />
+      <File FileName="1stMultiThread/MyData.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.1stMultiThread PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
