@@ -1,0 +1,13 @@
+c:\users\kurt.friedrich\documents\visual studio 2015\Projects\PokerProject\PokerProject\bin\Debug\PokerProject.exe.config
+C:\Users\kurt.friedrich\Desktop\AAA-Winter2017\Prog-120-Winter2017\Mod09- enums\PokerProject\PokerProject\bin\Debug\PokerProject.exe.config
+C:\Users\Patrick's PC\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.csprojResolveAssemblyReference.cache
+C:\Users\Patrick's PC\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.csproj.CoreCompileInputs.cache
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.csprojResolveAssemblyReference.cache
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.csproj.CoreCompileInputs.cache
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\bin\Debug\PokerProject.exe.config
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\bin\Debug\PokerProject.exe
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\bin\Debug\PokerProject.pdb
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\bin\Debug\CardLibrary.dll
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\bin\Debug\CardLibrary.pdb
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.exe
+C:\Users\Janusz\Desktop\PokerProjectStart\PokerProject\obj\Debug\PokerProject.pdb
